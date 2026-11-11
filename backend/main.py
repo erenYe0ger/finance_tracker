@@ -5,6 +5,7 @@ from sqlalchemy import text
 from database import engine, get_db
 from config import settings
 from routers.auth import router as auth_router
+from routers.transactions import router as transactions_router
 
 
 @asynccontextmanager
@@ -30,6 +31,7 @@ app = FastAPI(
 )
 
 app.include_router(auth_router, prefix="/api/v1/auth", tags=["authentication"])
+app.include_router(transactions_router, prefix="/api/v1/transactions", tags=["transactions"])
 
 
 @app.get("/api/v1/health", tags=["health"])

@@ -25,6 +25,7 @@ class AppConstants {
   static const String logoutEndpoint = '/auth/logout';
   static const String meEndpoint = '/auth/me';
   static const String healthEndpoint = '/health';
+  static const String transactionsEndpoint = '/transactions';
 
   /// Secure storage keys
   static const String accessTokenKey = 'access_token';
