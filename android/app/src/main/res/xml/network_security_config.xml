@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Allow cleartext HTTP for local development backend -->
+    <!-- This is needed for Android 9+ (API 28+) which blocks cleartext by default -->
+    <domain-config cleartextTrafficPermitted="true">
+        <!-- Allow HTTP for localhost (emulator) -->
+        <domain includeSubdomains="true">10.0.2.2</domain>
+        <!-- Allow HTTP for local network IPs (192.168.x.x, 10.x.x.x, 172.16-31.x.x) -->
+        <domain includeSubdomains="true">192.168.0.0/16</domain>
+        <domain includeSubdomains="true">10.0.0.0/8</domain>
+        <domain includeSubdomains="true">172.16.0.0/12</domain>
+    </domain-config>
+
+    <!-- For production, use HTTPS and remove cleartextTrafficPermitted -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
